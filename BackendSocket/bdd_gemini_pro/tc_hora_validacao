@@ -1,0 +1,66 @@
+TEST CASE ID: TC_016
+TITLE: Sincronização automática da hora fornecida pela rede (Caminho Feliz)
+PRECONDITIONS: O dispositivo Android está conectado à internet (Wi-Fi ou Dados Móveis). A configuração "Data e hora automáticas" está desativada. A hora atual do dispositivo está propositalmente configurada com atraso de 1 hora.
+STEPS:
+
+Acessar o aplicativo "Configurações".
+
+Navegar até "Sistema" (ou "Gerenciamento Geral") e selecionar "Data e hora".
+
+Tocar na chave de alternância "Data e hora automáticas" (ou "Fornecidas pela rede") para ativá-la.
+
+Observar a hora exibida na barra de status superior.
+POSTCONDITIONS: O sistema ajusta o relógio interno comunicando-se com os servidores de tempo (NTP) ou via protocolo da operadora de telefonia (NITZ).
+PASS CRITERIA: A hora exibida na barra de status e em todos os widgets do sistema deve ser atualizada instantaneamente para a hora oficial correspondente ao fuso horário atual do usuário.
+
+TEST CASE ID: TC_017
+TITLE: Alteração do formato de exibição da hora (12h/24h) (Caminho Feliz)
+PRECONDITIONS: O dispositivo Android está ligado e a tela desbloqueada. O fuso horário está configurado para um horário no período da tarde (exemplo: 14:00 ou 2:00 PM).
+STEPS:
+
+Acessar "Configurações" > "Sistema" > "Data e hora".
+
+Localizar a opção "Usar formato de 24 horas".
+
+Alternar a opção para Desativado (formato 12h) e observar a barra de status.
+
+Alternar a opção para Ativado (formato 24h) e observar a barra de status.
+POSTCONDITIONS: A interface gráfica do usuário atualiza o padrão de exibição de tempo em todo o sistema.
+PASS CRITERIA: Ao desativar a opção (passo 3), o relógio na barra de status e tela de bloqueio deve exibir o formato com sufixo, por exemplo, "2:00 PM". Ao ativar a opção (passo 4), o relógio deve exibir "14:00". A transição visual deve ocorrer imediatamente sem necessidade de reiniciar o dispositivo.
+
+TEST CASE ID: TC_018
+TITLE: Falha na sincronização automática de hora sem conectividade de rede (Cenário de Falha)
+PRECONDITIONS: O dispositivo está com o Modo Avião ativado (sem rede celular ou Wi-Fi). A opção "Data e hora automáticas" está desativada. A hora foi manualmente alterada para um horário incorreto.
+STEPS:
+
+Acessar "Configurações" > "Sistema" > "Data e hora".
+
+Tocar na chave para ativar "Data e hora automáticas".
+
+Observar o comportamento do relógio na barra de status.
+POSTCONDITIONS: O dispositivo tenta buscar o tempo real da rede, falha na conexão e mantém a contagem do relógio de tempo real (RTC) do hardware.
+PASS CRITERIA: O aplicativo de configurações não deve apresentar travamentos ou falhas ("crash"). O sistema operacional deve aceitar a ativação da chave visualmente, porém a hora exibida no dispositivo NÃO deve ser corrigida, mantendo o horário manual incorreto até que uma conexão de rede seja restabelecida.
+
+TEST CASE ID: TC_019
+TITLE: Atualização automática do relógio ao alterar a zona de Fuso Horário (Caso Extremo)
+PRECONDITIONS: O dispositivo possui a opção "Fuso horário automático" ativada e está conectado à rede. O usuário viaja ou o sinal da rede muda repentinamente para uma região com fuso horário diferente (ex: de GMT-3 para GMT-4). O teste pode ser simulado via mock de localização/rede.
+STEPS:
+
+Conectar o dispositivo a uma torre de celular (ou rede simulada) configurada com o novo fuso horário.
+
+Desbloquear a tela e observar o relógio na barra de status e no widget principal.
+POSTCONDITIONS: O serviço de telefonia ou de localização em segundo plano notifica o sistema operacional da mudança de fuso.
+PASS CRITERIA: A hora exibida no dispositivo deve pular automaticamente adiantando ou atrasando as horas inteiras (ou frações exatas) correspondentes à nova localidade. Os minutos e segundos devem permanecer sincronizados perfeitamente com a rede, sem causar interrupções de uso.
+
+TEST CASE ID: TC_020
+TITLE: Transição exata de minutos durante a virada para o Horário de Verão (DST) (Caso Extremo)
+PRECONDITIONS: O fuso horário do dispositivo está configurado manualmente para uma região que adota o horário de verão (ex: fuso de Nova York, EST/EDT). A data e a hora manuais estão definidas para 1 minuto antes do salto da transição (ex: 01:59 AM do dia da mudança para o horário de verão).
+STEPS:
+
+Retornar à tela inicial do dispositivo.
+
+Aguardar 1 minuto exato de tempo real.
+
+Observar o relógio do dispositivo no exato instante em que o minuto vira.
+POSTCONDITIONS: O sistema operacional consulta seu banco de dados de fusos horários (tzdata) e aplica a regra de salto (offset) correspondente à região.
+PASS CRITERIA: No minuto seguinte à configuração (01:59 AM), o relógio do dispositivo deve avançar diretamente para as 03:00 AM (início do horário de verão) — ou retroceder para as 01:00 AM caso seja o fim do horário de verão —, sem passar por horas inválidas e refletindo a mudança imediatamente na interface.

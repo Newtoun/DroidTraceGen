@@ -1,0 +1,19 @@
+ID DO CASO DE TESTE: TC_001
+TÍTULO: Recebimento e atendimento de chamada telefônica
+
+PRÉ-CONDIÇÕES:
+  - O dispositivo móvel está na tela inicial (Home) com o aplicativo de launcher aberto.
+  - Não há nenhuma chamada em andamento.
+
+PASSOS:
+  1. Recebimento de uma chamada telefônica entrante e toque do telefone.
+     Resultado Esperado: Aparecimento da notificação ou tela de atendimento de chamada na tela inicial (Home).
+  2. Seleção da opção "Answer" (Atender) para aceitar a chamada.
+     Resultado Esperado: A chamada é estabelecida e o aplicativo de telefone (com.google.android.dialer)
+      é aberto em primeiro plano, mostrando que a chamada está ativa.
+
+PÓS-CONDIÇÕES:
+  - O dispositivo móvel está com uma chamada telefônica ativa e o aplicativo de telefone é exibido na tela.
+
+CRITÉRIOS DE APROVAÇÃO:
+  - A chamada telefônica foi recebida e atendida com sucesso, e o aplicativo de telefone foi aberto para gerenciar a chamada em andamento.

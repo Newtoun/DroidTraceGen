@@ -1,0 +1,11 @@
+Get current screen: Start Recording | Home | com.google.android.apps.nexuslauncher
+Get current screen: T-Mobile | No Title | com.android.systemui
+Get current screen: 14 (UE1A.230829.036.A4) | No Title | com.android.systemui
+Select Internet, AndroidWifi [ON] | No Title | com.android.systemui
+Get current screen: Home or Main Screen | No Title | com.android.systemui
+Select Wi‑Fi [OFF] | No Title | com.android.systemui
+Disable Wi-Fi
+Select Wi‑Fi [ON] | No Title | com.android.systemui
+Enable Wi-Fi
+Connect to Wi-Fi network "AndroidWifi"
+Get current screen: Home | Home | com.google.android.apps.nexuslauncher

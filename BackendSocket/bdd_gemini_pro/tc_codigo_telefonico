@@ -1,0 +1,54 @@
+TEST CASE ID: TC_026
+TITLE: Acessar menu oculto de informações do dispositivo via código MMI padrão de auto-execução (Caminho Feliz)
+PRECONDITIONS: O dispositivo Android está ligado e desbloqueado. O aplicativo nativo de Telefone (Dialer) está aberto e a aba do teclado numérico está visível.
+STEPS:
+
+Digitar no teclado numérico o código MMI padrão universal para exibição do IMEI (ex: *#06#).
+POSTCONDITIONS: O sistema intercepta sequências de caracteres específicas no discador e aciona a interface nativa correspondente antes de tentar estabelecer uma ligação.
+PASS CRITERIA: Assim que o último caractere da sequência ('#') for digitado, o aplicativo não deve exigir que o usuário toque no botão de realizar chamada. Uma janela modal ou uma nova tela do sistema deve abrir imediatamente, exibindo as informações de hardware do dispositivo (IMEI, MEID, Número de Série).
+
+TEST CASE ID: TC_027
+TITLE: Executar código USSD de operadora para acessar opções e serviços de rede (Caminho Feliz)
+PRECONDITIONS: O dispositivo possui um SIM card válido e ativado. Há cobertura e sinal de rede celular adequados. O aplicativo de Telefone está aberto no teclado numérico.
+STEPS:
+
+Digitar um código USSD válido fornecido pela operadora (exemplo genérico: *#123# ou *144#).
+
+Tocar no botão de realizar chamada (ícone de telefone verde).
+POSTCONDITIONS: O dispositivo envia a string USSD como uma requisição de sessão direta para os servidores da operadora de telefonia.
+PASS CRITERIA: A tela deve exibir brevemente uma mensagem de carregamento como "Código USSD em execução...". Em poucos segundos, um menu interativo em formato de texto (Alert Dialog) vindo da operadora deve ser renderizado na tela, permitindo a leitura e a inserção de respostas numéricas para navegar nas opções ocultas do serviço.
+
+TEST CASE ID: TC_028
+TITLE: Tentativa de acessar opções ocultas utilizando um código MMI/USSD mal formatado ou inexistente (Cenário de Falha)
+PRECONDITIONS: O dispositivo Android está ligado, desbloqueado e com sinal de operadora. O aplicativo de Telefone está aberto no teclado numérico.
+STEPS:
+
+Digitar uma sequência de caracteres que simula um código, mas que não existe no sistema ou na rede (ex: *#999999# ou ##0000#).
+
+Se a interface não reagir automaticamente, tocar no botão de realizar chamada.
+POSTCONDITIONS: O dialer repassa a sequência inválida para as APIs do sistema de telecomunicações, que não encontram correspondência de serviço local ou de rede.
+PASS CRITERIA: Nenhuma tela de diagnóstico de hardware ou menu oculto deve ser aberta. O sistema deve rejeitar a requisição exibindo uma mensagem de erro clara em tela (toast notification ou alert), como "Problema de conexão ou código MMI inválido", retornando ao teclado numérico sem causar travamentos no aplicativo.
+
+TEST CASE ID: TC_029
+TITLE: Tentativa de executar código de opções ocultas (USSD) sem conexão de rede celular (Cenário de Falha)
+PRECONDITIONS: O Modo Avião está ativado (bloqueando a rádio celular) ou o dispositivo está sem o cartão SIM. O aplicativo de Telefone está aberto no teclado numérico.
+STEPS:
+
+Digitar um código USSD dependente de rede (ex: *144#) no teclado.
+
+Tocar no botão de realizar chamada.
+POSTCONDITIONS: O sistema impede a tentativa de abertura de sessão de rádio em conformidade com o bloqueio do Modo Avião ou ausência de SIM.
+PASS CRITERIA: O envio do código deve falhar de imediato. A interface do usuário deve bloquear a requisição e exibir um aviso indicando o motivo da falha, orientando o usuário a desativar o Modo Avião ou inserir um chip para utilizar serviços de rede.
+
+TEST CASE ID: TC_030
+TITLE: Sobrescrita de tela por chamada entrante durante uso de menu oculto de diagnóstico de fabricante (Caso Extremo)
+PRECONDITIONS: O dispositivo possui chip válido com sinal ativo. O usuário digitou com sucesso um código de engenharia/fábrica (ex: #0# em dispositivos Samsung) e o menu oculto de diagnóstico de hardware está aberto na tela em tela cheia.
+STEPS:
+
+Interagir com uma das opções de teste do menu oculto (ex: iniciar o teste de tela sensível ao toque ou display RGB).
+
+A partir de um segundo aparelho, realizar uma ligação telefônica para o dispositivo em teste.
+
+Aguardar a recepção da chamada, e em seguida, rejeitar a ligação.
+POSTCONDITIONS: O sistema operacional garante a prioridade absoluta da interface de chamadas recebidas (Call UI) sobre aplicativos utilitários e menus de engenharia.
+PASS CRITERIA: A notificação ou tela de chamada recebida deve sobrepor imediatamente e com fluidez o menu de diagnóstico, acompanhada de toque e vibração normais. Ao rejeitar a chamada (passo 3), o sistema deve retornar com segurança à tela do menu oculto exatamente no mesmo estado/teste em que o usuário estava, sem causar reinicialização do dispositivo (kernel panic) ou o fechamento forçado da interface de fábrica.

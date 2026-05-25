@@ -1,0 +1,64 @@
+TEST CASE ID: TC_006
+TITLE: Realizar uma chamada telefônica de saída (Caminho Feliz)
+PRECONDITIONS: O dispositivo possui um SIM card válido e inserido corretamente. Há sinal de rede celular adequado da operadora. O plano telefônico possui saldo ou minutos disponíveis.
+STEPS:
+
+Abrir o aplicativo nativo de Telefone.
+
+Acessar o teclado numérico (dialer) ou a lista de contatos.
+
+Inserir um número de telefone válido ou selecionar um contato existente.
+
+Tocar no botão de realizar chamada (ícone de telefone verde).
+POSTCONDITIONS: A chamada é estabelecida e os recursos de microfone e alto-falante auricular são ativados.
+PASS CRITERIA: O dispositivo deve exibir a tela de chamada em andamento com as informações do destinatário. O tom de chamada (ringback tone) deve ser reproduzido pelo alto-falante auricular e, após o atendimento, o áudio bidirecional deve ser claro e sem interrupções.
+
+TEST CASE ID: TC_007
+TITLE: Receber e atender uma chamada telefônica com o dispositivo bloqueado (Caminho Feliz)
+PRECONDITIONS: O dispositivo possui sinal de rede celular ativo e está com a tela bloqueada (standby).
+STEPS:
+
+O dispositivo recebe uma chamada telefônica entrante de um número externo.
+
+Deslizar o botão de atendimento na tela (ou realizar o gesto padrão do sistema) para aceitar a chamada.
+POSTCONDITIONS: A conexão de voz é estabelecida entre as partes.
+PASS CRITERIA: O dispositivo deve tocar/vibrar conforme suas configurações de perfil de som. A tela deve acender exibindo o identificador de chamadas (Caller ID). Ao atender, a chamada deve ser conectada imediatamente, o cronômetro deve iniciar e o áudio deve ser transmitido sem falhas.
+
+TEST CASE ID: TC_008
+TITLE: Tentativa de realizar chamada sem cobertura de rede celular (Cenário de Falha)
+PRECONDITIONS: O dispositivo está fora da área de cobertura da operadora (indicador de sinal "Sem serviço") ou o SIM card foi removido.
+STEPS:
+
+Abrir o aplicativo de Telefone.
+
+Inserir um número no teclado numérico.
+
+Tocar no botão de realizar chamada.
+POSTCONDITIONS: O sistema bloqueia a tentativa de discagem para números comuns (não emergenciais).
+PASS CRITERIA: O aplicativo não deve tentar iniciar a discagem real. Uma mensagem de erro clara deve ser exibida ao usuário (ex: "Rede móvel não disponível", "Não registrado na rede" ou "Sem sinal"), e o aplicativo deve retornar à tela anterior.
+
+TEST CASE ID: TC_009
+TITLE: Receber uma segunda chamada com uma ligação já em andamento - Chamada em Espera (Caso Extremo)
+PRECONDITIONS: O serviço de "Chamada em Espera" está ativado junto à operadora. O usuário já está em uma chamada telefônica ativa.
+STEPS:
+
+O dispositivo recebe uma nova ligação de um terceiro número.
+
+Visualizar a notificação da nova chamada na tela.
+
+Tocar na opção para "Atender e colocar a chamada atual em espera".
+POSTCONDITIONS: O dispositivo gerencia múltiplos canais de voz, retendo o primeiro e ativando o segundo.
+PASS CRITERIA: Um bipe sonoro de notificação deve ser ouvido sobre o áudio da primeira chamada. A tela deve exibir os controles de ambas as ligações. Ao aceitar a segunda, o áudio da primeira chamada deve ser mutado (colocado em espera) instantaneamente, e a comunicação com a segunda chamada deve ser estabelecida com sucesso.
+
+TEST CASE ID: TC_010
+TITLE: Atuação do sensor de proximidade durante uma chamada ativa (Caso Extremo)
+PRECONDITIONS: O usuário está em uma chamada telefônica ativa utilizando o alto-falante auricular (o modo viva-voz e fones de ouvido devem estar desativados).
+STEPS:
+
+Aproximar o dispositivo do rosto (ou cobrir fisicamente o sensor de proximidade na parte superior da tela).
+
+Manter o dispositivo próximo por alguns segundos.
+
+Afastar o dispositivo do rosto.
+POSTCONDITIONS: O estado da tela é dinamicamente gerenciado pelo hardware para evitar toques indesejados.
+PASS CRITERIA: A tela do dispositivo deve apagar e desativar as entradas de toque imediatamente ao ser aproximada do rosto (passo 1). A chamada de voz não deve sofrer nenhuma interrupção. Ao afastar o dispositivo (passo 3), a tela deve acender instantaneamente, exibindo os controles da chamada e permitindo novamente interações por toque.

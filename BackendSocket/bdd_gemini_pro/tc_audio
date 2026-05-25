@@ -1,0 +1,58 @@
+TEST CASE ID: TC_021
+TITLE: Ativar o modo "Não Perturbe" e validar a supressão de som de notificações (Caminho Feliz)
+PRECONDITIONS: O dispositivo Android está ligado. O volume de toques e notificações está configurado em um nível alto/audível. O modo "Não Perturbe" está desativado.
+STEPS:
+
+Deslizar a tela de cima para baixo para acessar o painel de Configurações Rápidas.
+
+Tocar no atalho "Não Perturbe" para ativá-lo.
+
+Utilizar um dispositivo secundário ou ferramenta de teste para enviar uma notificação (ex: mensagem de SMS ou e-mail) para o dispositivo testado.
+POSTCONDITIONS: O sistema operacional ativa as regras de interrupção e bloqueia as saídas de áudio e vibração associadas aos canais de notificação.
+PASS CRITERIA: A notificação deve chegar ao dispositivo, mas não deve emitir nenhum efeito sonoro (toque de notificação) ou vibração. A tela não deve acender para exibir a notificação, mantendo o ambiente silencioso.
+
+TEST CASE ID: TC_022
+TITLE: Desativar o modo "Não Perturbe" e validar a restauração dos efeitos sonoros (Caminho Feliz)
+PRECONDITIONS: O dispositivo Android está com o modo "Não Perturbe" ativado (ícone visível na barra de status). O perfil de áudio anterior estava configurado com som ligado.
+STEPS:
+
+Deslizar a tela de cima para baixo para acessar as Configurações Rápidas.
+
+Tocar no atalho "Não Perturbe" para desativá-lo.
+
+Receber uma nova chamada telefônica ou notificação.
+POSTCONDITIONS: O gerenciador de áudio do sistema restaura os perfis de som (volume e vibração) para seus valores originais antes da ativação do modo.
+PASS CRITERIA: O dispositivo deve reproduzir o som de toque (ringtone) ou notificação no seu volume normal pré-configurado. O efeito sonoro deve ser claro e audível, confirmando a transição bem-sucedida do estado silencioso para o ruidoso.
+
+TEST CASE ID: TC_023
+TITLE: Validar efeito sonoro para contatos marcados como "Exceção/Favoritos" durante o Não Perturbe (Caso Extremo)
+PRECONDITIONS: Modo "Não Perturbe" está ativado. Nas configurações avançadas do Não Perturbe, a regra de interrupção está definida para permitir chamadas de "Contatos Favoritos" (Starred contacts). Existe um contato salvo no dispositivo marcado com a estrela de favorito.
+STEPS:
+
+O dispositivo recebe uma chamada de um número desconhecido ou contato não favorito.
+
+O dispositivo recebe uma chamada telefônica do contato previamente marcado como favorito.
+POSTCONDITIONS: O gerenciador de políticas do sistema filtra os eventos de interrupção, liberando o áudio apenas para remetentes aprovados na lista de exceções.
+PASS CRITERIA: A primeira chamada (passo 1) deve ser totalmente silenciada. A segunda chamada (passo 2) deve "furar" o bloqueio do Não Perturbe e reproduzir o efeito sonoro (toque de chamada) em volume normal, confirmando o funcionamento correto da regra de exceção.
+
+TEST CASE ID: TC_024
+TITLE: Validar efeitos sonoros de reprodução de Mídia e Alarmes com o Não Perturbe ativado (Caso Extremo)
+PRECONDITIONS: Modo "Não Perturbe" está ativado. Nas configurações padrão, "Mídia" e "Alarmes" estão definidos para não serem interrompidos por essa funcionalidade. Um alarme está configurado para disparar no próximo minuto.
+STEPS:
+
+Abrir um aplicativo nativo de música ou navegador, iniciar a reprodução de um áudio/vídeo e aumentar o volume de mídia pelos botões físicos.
+
+Aguardar o horário exato do disparo do alarme previamente agendado.
+POSTCONDITIONS: O roteamento dos canais de áudio de mídia (STREAM_MUSIC) e alarme (STREAM_ALARM) não são silenciados pelas políticas de interrupção (STREAM_RING / STREAM_NOTIFICATION).
+PASS CRITERIA: O efeito sonoro da mídia deve ser reproduzido normalmente pelos alto-falantes durante a execução. O alarme deve disparar no horário exato e emitir seu som alto e de forma ininterrupta, garantindo que o Não Perturbe silenciou apenas comunicações e notificações do sistema.
+
+TEST CASE ID: TC_025
+TITLE: Tentativa de forçar o aumento de volume de toque via botões físicos com Não Perturbe estrito ativado (Cenário de Falha)
+PRECONDITIONS: Modo "Não Perturbe" está ativado e configurado em sua forma mais rigorosa (opção "Silêncio Total", bloqueando até mesmo mudança de volumes de campainha). O dispositivo está na tela inicial, desbloqueado.
+STEPS:
+
+Pressionar o botão físico de aumentar volume ("Volume Up") na lateral do dispositivo.
+
+Expandir o painel deslizante de volumes na tela e tentar arrastar a barra correspondente ao volume de toque/notificações para o máximo.
+POSTCONDITIONS: O controle da API de áudio sobrepõe a tentativa do usuário, impedindo alterações que invalidem o estado atual da funcionalidade de bloqueio.
+PASS CRITERIA: O controle físico ou na tela deve alterar apenas o volume de "Mídia". O slider de "Toque/Notificação" deve apresentar um aspecto visual bloqueado (ex: cor acinzentada), retornar imediatamente à posição "Mudo" se arrastado, ou o sistema deve exibir um aviso indicando que o volume não pode ser alterado enquanto o modo Não Perturbe estiver em execução.

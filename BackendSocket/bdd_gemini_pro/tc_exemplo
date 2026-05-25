@@ -1,0 +1,141 @@
+TEST CASE ID: TC_011
+
+TITLE: Desativar e Ativar Wi-Fi a partir das Configurações Rápidas com reconexão automática (Caminho Feliz)
+PRECONDITIONS: O dispositivo Android está ligado. O Wi-Fi está atualmente Ativado.
+ Há uma rede Wi-Fi previamente salva e conhecida dentro da área de alcance com sinal estável.
+STEPS:
+
+Deslizar a tela de cima para baixo para abrir o painel de Configurações Rápidas.
+
+Tocar no ícone de "Wi-Fi" para desativá-lo.
+
+Tocar novamente no ícone de "Wi-Fi" para ativá-lo.
+
+POSTCONDITIONS: O rádio Wi-Fi do dispositivo é ligado e a interface de rede sem fio é ativada.
+
+PASS CRITERIA: O ícone do Wi-Fi deve mudar para o estado ativado (colorido/preenchido). 
+O dispositivo deve identificar a rede salva e conectar-se a ela automaticamente em poucos
+ segundos. O ícone de Wi-Fi na barra de status deve exibir o indicador de nível de sinal, 
+ e o dispositivo deve ter acesso à internet.
+
+--------------------------------------------------------------------
+
+TEST CASE ID: TC_001
+TITLE: Ativar Modo Avião a partir do painel de Configurações Rápidas (Caminho Feliz)
+PRECONDITIONS: O dispositivo Android está ligado e desbloqueado. As conexões de rede celular, Wi-Fi e Bluetooth estão ativadas e conectadas.
+STEPS:
+
+Deslizar a tela de cima para baixo para acessar o painel de Configurações Rápidas.
+
+Localizar e tocar no ícone "Modo Avião" (Airplane Mode) para ativá-lo.
+
+POSTCONDITIONS: O sistema operacional bloqueia as transmissões de rádiofrequência do dispositivo.
+PASS CRITERIA: O ícone de avião deve ser exibido na barra de status. Os ícones de sinal de operadora (celular), Wi-Fi e Bluetooth devem desaparecer ou indicar status desativado imediatamente. Nenhuma chamada, SMS ou navegação na web via dados móveis deve ser possível.
+
+
+
+
+
+
+----------------------
+
+TEST CASE ID: TC_012
+TITLE: Desativar Wi-Fi e realizar transição (fallback) para a rede de Dados Móveis (Caminho Feliz)
+PRECONDITIONS: O dispositivo Android está conectado a uma rede Wi-Fi com acesso à internet. A rede 
+de Dados Móveis (4G/5G) está ativada nas configurações e possui cobertura.
+STEPS:
+
+Deslizar a tela de cima para baixo para acessar o painel de Configurações Rápidas.
+
+Tocar no ícone de "Wi-Fi" para desativá-lo.
+POSTCONDITIONS: O rádio Wi-Fi é desligado e o roteamento de dados do sistema é transferido para a rede de celular.
+PASS CRITERIA: O ícone do Wi-Fi deve desaparecer da barra de status superior. O ícone indicativo de dados móveis (ex: 4G, 5G, LTE) deve aparecer ou tornar-se o principal meio de conexão. A transição deve ocorrer de forma fluida, permitindo que a navegação na internet continue sem exigir intervenção do usuário.
+
+
+--------------
+
+
+
+TEST CASE ID: TC_007
+TITLE: Receber e atender uma chamada telefônica com o dispositivo bloqueado (Caminho Feliz)
+PRECONDITIONS: O dispositivo possui sinal de rede celular ativo e está com a tela bloqueada (standby).
+STEPS:
+
+O dispositivo recebe uma chamada telefônica entrante de um número externo.
+
+Deslizar o botão de atendimento na tela (ou realizar o gesto padrão do sistema) para aceitar a chamada.
+
+POSTCONDITIONS: A conexão de voz é estabelecida entre as partes.
+
+PASS CRITERIA: O dispositivo deve tocar/vibrar conforme suas configurações de perfil de som. 
+A tela deve acender exibindo o identificador de chamadas (Caller ID). Ao atender, a chamada deve ser
+ conectada imediatamente, o cronômetro deve iniciar e o áudio deve ser transmitido sem falhas.
+
+
+
+-------------------
+
+
+TEST CASE ID: TC_016
+TITLE: Sincronização automática da hora fornecida pela rede (Caminho Feliz)
+PRECONDITIONS: O dispositivo Android está conectado à internet (Wi-Fi ou Dados Móveis).
+ A configuração "Data e hora automáticas" está desativada. A hora atual do dispositivo 
+ está propositalmente configurada com atraso de 1 hora.
+STEPS:
+
+Acessar o aplicativo "Configurações".
+
+Navegar até "Sistema" (ou "Gerenciamento Geral") e selecionar "Data e hora".
+
+Tocar na chave de alternância "Data e hora automáticas" (ou "Fornecidas pela rede") para ativá-la.
+
+Observar a hora exibida na barra de status superior.
+POSTCONDITIONS: O sistema ajusta o relógio interno comunicando-se com os servidores de
+ tempo (NTP) ou via protocolo da operadora de telefonia (NITZ).
+PASS CRITERIA: A hora exibida na barra de status e em todos os widgets do sistema deve 
+ser atualizada instantaneamente para a hora oficial correspondente ao fuso horário atual do usuário.
+
+
+----------------------------------------
+
+
+TEST CASE ID: TC_021
+TITLE: Ativar o modo "Não Perturbe" e validar a supressão de som de notificações (Caminho Feliz)
+PRECONDITIONS: O dispositivo Android está ligado. O volume de toques e notificações está configurado
+ em um nível alto/audível. O modo "Não Perturbe" está desativado.
+STEPS:
+
+Deslizar a tela de cima para baixo para acessar o painel de Configurações Rápidas.
+
+Tocar no atalho "Não Perturbe" para ativá-lo.
+
+Utilizar um dispositivo secundário ou ferramenta de teste para enviar uma notificação (ex: mensagem de SMS ou e-mail)
+ para o dispositivo testado.
+POSTCONDITIONS: O sistema operacional ativa as regras de interrupção e bloqueia as saídas de áudio e vibração 
+associadas aos canais de notificação.
+PASS CRITERIA: A notificação deve chegar ao dispositivo, mas não deve emitir nenhum efeito sonoro
+ (toque de notificação) ou vibração. A tela não deve acender para exibir a notificação, mantendo o ambiente silencioso.
+
+ ------------------------
+
+
+ TEST CASE ID: TC_026
+TITLE: Acessar menu oculto de informações do dispositivo via código MMI 
+padrão de auto-execução (Caminho Feliz)
+PRECONDITIONS: O dispositivo Android está ligado e desbloqueado. 
+O aplicativo nativo de Telefone (Dialer)
+está aberto e a aba do teclado numérico está visível.
+
+STEPS:
+
+Digitar no teclado numérico o código MMI padrão universal para exibição do IMEI (ex: *#06#).
+
+POSTCONDITIONS: O sistema intercepta sequências de caracteres específicas no discador
+ e aciona a interface nativa correspondente antes de tentar estabelecer uma ligação.
+
+PASS CRITERIA: Assim que o último caractere da sequência ('#') for digitado, o aplicativo 
+não deve exigir que o usuário toque no botão de realizar chamada. Uma janela modal ou uma nova
+ tela do sistema deve abrir imediatamente, exibindo as informações de hardware do dispositivo (IMEI,
+  MEID, Número de Série).
+
+

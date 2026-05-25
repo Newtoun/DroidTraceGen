@@ -1,0 +1,22 @@
+ID DO CASO DE TESTE: TC_001
+TÍTULO: Verificar acesso a informações do dispositivo via discagem rápida
+
+PRÉ-CONDIÇÕES:
+  - O aplicativo de telefone esteja instalado e funcionando corretamente no dispositivo.
+
+PASSOS:
+  1. Selecionar o aplicativo de telefone na tela inicial.
+     Resultado Esperado: A tela de telefone é exibida.
+  2. Selecionar a tecla "Discagem" na tela de telefone.
+     Resultado Esperado: O teclado numérico é exibido para digitar números de telefone.
+  3. Digitar "*#06*" no campo de número de telefone.
+     Resultado Esperado: A opção para acessar informações do dispositivo é mostrada.
+  4. Selecionar a opção que leva às informações do dispositivo.
+     Resultado Esperado: Uma tela com informações detalhadas do dispositivo, como o IMEI, é exibida.
+
+PÓS-CONDIÇÕES:
+  - O aplicativo de telefone permanece aberto na tela de informações do dispositivo.
+
+CRITÉRIOS DE APROVAÇÃO:
+  - As informações do dispositivo são corretamente exibidas após a digitação da
+   sequência "*#06*" e seleção da opção correspondente.

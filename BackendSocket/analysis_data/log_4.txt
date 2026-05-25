@@ -1,0 +1,7 @@
+Get current screen: Start Recording | Home | com.google.android.apps.nexuslauncher
+Select Settings | Home | com.google.android.apps.nexuslauncher
+Get current screen: Settings | Settings | com.android.settings
+Select System | No Title | com.android.settings
+Get current screen: System | System | com.android.settings
+Select Date & time | No Title | com.android.settings
+Get current screen: Date & time | Date & time | com.android.settings

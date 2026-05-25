@@ -1,0 +1,19 @@
+ID DO CASO DE TESTE: TC_001
+TÍTULO: Acessar configurações de data e hora no dispositivo
+
+PRÉ-CONDIÇÕES:
+  - O aplicativo de lançador do Nexus deve estar aberto na tela inicial.
+
+PASSOS:
+  1. Selecionar a opção "Settings" na tela inicial.
+     Resultado Esperado: A tela de configurações do sistema deve ser exibida.
+  2. Selecionar a opção "System" na tela de configurações.
+     Resultado Esperado: A tela de configurações do sistema deve ser atualizada com opções relacionadas ao sistema.
+  3. Selecionar a opção "Date & time" na tela de configurações do sistema.
+     Resultado Esperado: A tela de configurações de data e hora deve ser exibida.
+
+PÓS-CONDIÇÕES:
+  - O dispositivo deve estar com a tela de configurações de data e hora aberta.
+
+CRITÉRIOS DE APROVAÇÃO:
+  - A tela de configurações de data e hora deve ser exibida após a execução dos passos.

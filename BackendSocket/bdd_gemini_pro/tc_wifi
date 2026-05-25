@@ -1,0 +1,58 @@
+TEST CASE ID: TC_011
+TITLE: Ativar Wi-Fi a partir das Configurações Rápidas com reconexão automática (Caminho Feliz)
+PRECONDITIONS: O dispositivo Android está ligado. O Wi-Fi está atualmente desativado. Há uma rede Wi-Fi previamente salva e conhecida dentro da área de alcance com sinal estável.
+STEPS:
+
+Deslizar a tela de cima para baixo para abrir o painel de Configurações Rápidas.
+
+Tocar no ícone de "Wi-Fi" para ativá-lo.
+POSTCONDITIONS: O rádio Wi-Fi do dispositivo é ligado e a interface de rede sem fio é ativada.
+PASS CRITERIA: O ícone do Wi-Fi deve mudar para o estado ativado (colorido/preenchido). O dispositivo deve identificar a rede salva e conectar-se a ela automaticamente em poucos segundos. O ícone de Wi-Fi na barra de status deve exibir o indicador de nível de sinal, e o dispositivo deve ter acesso à internet.
+
+TEST CASE ID: TC_012
+TITLE: Desativar Wi-Fi e realizar transição (fallback) para a rede de Dados Móveis (Caminho Feliz)
+PRECONDITIONS: O dispositivo Android está conectado a uma rede Wi-Fi com acesso à internet. A rede de Dados Móveis (4G/5G) está ativada nas configurações e possui cobertura.
+STEPS:
+
+Deslizar a tela de cima para baixo para acessar o painel de Configurações Rápidas.
+
+Tocar no ícone de "Wi-Fi" para desativá-lo.
+POSTCONDITIONS: O rádio Wi-Fi é desligado e o roteamento de dados do sistema é transferido para a rede de celular.
+PASS CRITERIA: O ícone do Wi-Fi deve desaparecer da barra de status superior. O ícone indicativo de dados móveis (ex: 4G, 5G, LTE) deve aparecer ou tornar-se o principal meio de conexão. A transição deve ocorrer de forma fluida, permitindo que a navegação na internet continue sem exigir intervenção do usuário.
+
+TEST CASE ID: TC_013
+TITLE: Ativar Wi-Fi e tentar reconectar a uma rede com credenciais inválidas (Cenário de Falha)
+PRECONDITIONS: O dispositivo Android está com o Wi-Fi desativado. O dispositivo está dentro do alcance de uma rede salva, porém a senha dessa rede foi alterada recentemente no roteador.
+STEPS:
+
+Acessar o menu "Configurações" > "Rede e Internet" > "Wi-Fi".
+
+Ativar a chave de alternância do Wi-Fi.
+
+Observar o comportamento do sistema ao tentar conectar automaticamente à rede salva.
+POSTCONDITIONS: O Wi-Fi permanece ligado, mas a conexão à rede específica é rejeitada pelo roteador.
+PASS CRITERIA: O dispositivo deve tentar realizar o handshake e falhar. A rede na lista de redes disponíveis deve exibir o status "Erro de autenticação", "Falha ao conectar" ou "Senha incorreta". O sistema não deve travar e deve solicitar ao usuário a inserção da nova senha atualizada.
+
+TEST CASE ID: TC_014
+TITLE: Alternância rápida (Stress Test) do atalho de Wi-Fi (Caso Extremo)
+PRECONDITIONS: O dispositivo Android está ligado, desbloqueado e com o painel de Configurações Rápidas totalmente expandido.
+STEPS:
+
+Tocar no ícone de "Wi-Fi" repetidamente e de forma muito rápida (ex: 10 vezes em 3 segundos), alternando os estados de ligar e desligar sucessivamente.
+
+Parar as interações e observar a resposta do sistema.
+POSTCONDITIONS: O sistema operacional enfileira e resolve os comandos de hardware sem sobrecarga de memória ou crash da interface.
+PASS CRITERIA: A interface de usuário (System UI) não deve congelar, apresentar lentidão excessiva ("lag") ou reiniciar ("crash"). Após o término dos toques, o ícone deve estabilizar no último estado correspondente ao toque final (ligado ou desligado), e o rádio Wi-Fi deve refletir corretamente esse estado no hardware.
+
+TEST CASE ID: TC_015
+TITLE: Persistência do estado do Wi-Fi após ciclo de reinicialização do dispositivo (Caso Extremo)
+PRECONDITIONS: O dispositivo Android está ligado e o Wi-Fi está ativado e conectado a uma rede.
+STEPS:
+
+Pressionar o botão físico de energia (Power) e selecionar "Reiniciar".
+
+Aguardar a inicialização completa do sistema operacional.
+
+Desbloquear a tela e observar a barra de status e o painel de Configurações Rápidas.
+POSTCONDITIONS: O sistema operacional carrega as preferências salvas do usuário durante a inicialização de seus serviços essenciais de rede.
+PASS CRITERIA: O dispositivo deve inicializar com o recurso de Wi-Fi já ativado. O processo de varredura e conexão automática à rede previamente conectada deve ocorrer de forma transparente nos primeiros instantes de uso, sem necessidade de o usuário religar o Wi-Fi manualmente.

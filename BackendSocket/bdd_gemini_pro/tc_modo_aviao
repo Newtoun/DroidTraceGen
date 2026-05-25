@@ -1,0 +1,58 @@
+TEST CASE ID: TC_001
+TITLE: Ativar Modo Avião a partir do painel de Configurações Rápidas (Caminho Feliz)
+PRECONDITIONS: O dispositivo Android está ligado e desbloqueado. As conexões de rede celular, Wi-Fi e Bluetooth estão ativadas e conectadas.
+STEPS:
+
+Deslizar a tela de cima para baixo para acessar o painel de Configurações Rápidas.
+
+Localizar e tocar no ícone "Modo Avião" (Airplane Mode) para ativá-lo.
+POSTCONDITIONS: O sistema operacional bloqueia as transmissões de rádiofrequência do dispositivo.
+PASS CRITERIA: O ícone de avião deve ser exibido na barra de status. Os ícones de sinal de operadora (celular), Wi-Fi e Bluetooth devem desaparecer ou indicar status desativado imediatamente. Nenhuma chamada, SMS ou navegação na web via dados móveis deve ser possível.
+
+TEST CASE ID: TC_002
+TITLE: Desativar Modo Avião a partir do painel de Configurações Rápidas (Caminho Feliz)
+PRECONDITIONS: O dispositivo Android está ligado. O Modo Avião está atualmente ativado (ícone visível na barra de status).
+STEPS:
+
+Deslizar a tela de cima para baixo para acessar o painel de Configurações Rápidas.
+
+Localizar e tocar no ícone "Modo Avião" para desativá-lo.
+POSTCONDITIONS: O sistema operacional restaura as configurações de rádiofrequência anteriores à ativação do modo.
+PASS CRITERIA: O ícone de avião desaparece da barra de status. O dispositivo deve buscar automaticamente e reconectar-se à rede celular, Wi-Fi e Bluetooth previamente emparelhados em poucos segundos.
+
+TEST CASE ID: TC_003
+TITLE: Ativar Wi-Fi e Bluetooth com o Modo Avião já em execução (Caso Extremo)
+PRECONDITIONS: O dispositivo Android está ligado. O Modo Avião está ativado, bloqueando rede celular, Wi-Fi e Bluetooth.
+STEPS:
+
+Abrir o painel de Configurações Rápidas ou acessar o menu de Configurações do Android.
+
+Tocar no ícone de "Wi-Fi" para forçar sua ativação.
+
+Tocar no ícone de "Bluetooth" para forçar sua ativação.
+POSTCONDITIONS: O dispositivo permite conexões locais limitadas sem desativar a restrição de rede celular do Modo Avião.
+PASS CRITERIA: O Wi-Fi e o Bluetooth devem ligar e conectar-se a redes/dispositivos conhecidos com sucesso. O ícone de Modo Avião deve permanecer visível na barra de status simultaneamente aos ícones de Wi-Fi e Bluetooth, garantindo que a rede celular continue inativa.
+
+TEST CASE ID: TC_004
+TITLE: Ativar Modo Avião durante uma chamada telefônica celular ativa (Cenário de Falha / Interrupção)
+PRECONDITIONS: O dispositivo Android possui chip (SIM) válido com sinal. O usuário está no meio de uma chamada telefônica celular ativa.
+STEPS:
+
+Durante a ligação em andamento, deslizar a barra de notificações para baixo para acessar os atalhos.
+
+Tocar no ícone de "Modo Avião" para ativá-lo.
+POSTCONDITIONS: A transmissão de rádio da rede celular é forçadamente encerrada.
+PASS CRITERIA: A chamada telefônica em andamento deve ser derrubada e encerrada de forma imediata e limpa, sem travamentos no aplicativo de Telefone. A rede da operadora deve ficar indisponível logo em seguida.
+
+TEST CASE ID: TC_005
+TITLE: Persistência do estado do Modo Avião após reinicialização do dispositivo (Caso Extremo)
+PRECONDITIONS: O dispositivo Android está com o Modo Avião ativado.
+STEPS:
+
+Pressionar e segurar o botão físico de energia (Power) do dispositivo.
+
+Selecionar a opção "Reiniciar" (Restart) no menu de energia.
+
+Aguardar a inicialização completa do sistema operacional e desbloquear a tela.
+POSTCONDITIONS: O sistema operacional é carregado mantendo o último estado configurado pelo usuário para conexões de rede.
+PASS CRITERIA: Após a reinicialização completa, o dispositivo deve inicializar com o Modo Avião ainda ativado. Nenhuma conexão de rádio celular deve ser estabelecida automaticamente durante ou após o boot.

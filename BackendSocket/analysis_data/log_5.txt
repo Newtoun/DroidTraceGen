@@ -1,0 +1,13 @@
+Get current screen: Start Recording | Home | com.google.android.apps.nexuslauncher
+Select Phone | Home | com.google.android.apps.nexuslauncher
+Get current screen: Home | Phone | com.google.android.dialer
+Select Keypad | Phone | com.google.android.dialer
+Get current screen: Phone Number | Phone | com.google.android.dialer
+Select * | Phone | com.google.android.dialer
+Select # | Phone | com.google.android.dialer
+Type *# in Phone Number
+Select 0 | Phone | com.google.android.dialer
+Select 6,MNO | Phone | com.google.android.dialer
+Type *#06 in Phone Number
+Select android.widget.FrameLayout | Device information | com.google.android.dialer
+Get current screen: Device information | Device information | com.google.android.dialer

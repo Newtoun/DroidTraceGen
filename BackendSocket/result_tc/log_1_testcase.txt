@@ -1,0 +1,26 @@
+ID DO CASO DE TESTE: TC_001
+TÍTULO: Verificação da conexão Wi-Fi
+
+PRÉ-CONDIÇÕES:
+  - O dispositivo está no estado inicial de gravação.
+  - A tela inicial do sistema está visível.
+
+PASSOS:
+  1. Selecionar "Internet" e ativar a opção AndroidWifi.
+     Resultado Esperado: A tela de configurações deve ser exibida com a opção Wi-Fi ativada.
+  2. Selecionar "Wi-Fi [OFF]" na tela de configurações.
+     Resultado Esperado: O Wi-Fi deve ser desativado e o dispositivo não deve estar conectado
+      à rede.
+  3. Selecionar "Wi-Fi [ON]" na tela de configurações.
+     Resultado Esperado: O Wi-Fi deve ser ativado e a lista de redes disponíveis deve ser 
+     exibida.
+  4. Conectar-se à rede Wi-Fi "AndroidWifi".
+     Resultado Esperado: O dispositivo deve se conectar com sucesso à rede "AndroidWifi" 
+     e exibir tela inicial do sistema.
+
+PÓS-CONDIÇÕES:
+  - O dispositivo está conectado à rede Wi-Fi "AndroidWifi".
+
+CRITÉRIOS DE APROVAÇÃO:
+  - O dispositivo consegue ativar e desativar o Wi-Fi com sucesso.
+  - O dispositivo se conecta corretamente à rede Wi-Fi "AndroidWifi".

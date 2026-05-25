@@ -1,0 +1,21 @@
+ID DO CASO DE TESTE: TC_001
+TÍTULO: Ativação do Modo Avião
+
+PRÉ-CONDIÇÕES:
+  - O dispositivo deve estar no estado inicial com todas as funcionalidades habilitadas.
+
+PASSOS:
+  1. Acessar a tela de configurações rápidas.
+     Resultado Esperado: A tela de configurações rápidas é exibida.
+  2. Selecionar a opção "Modo Avião" e ativá-lo.
+     Resultado Esperado: O dispositivo exibe a mensagem "Modo Avião habilitado".
+  3. Verificar o status do Wi-Fi.
+     Resultado Esperado: O Wi-Fi é desabilitado.
+  4. Verificar o tipo de rede móvel.
+     Resultado Esperado: O tipo de rede móvel é alterado para "Desconhecido".
+
+PÓS-CONDIÇÕES:
+  - O dispositivo permanece com o Modo Avião habilitado e sem conexão Wi-Fi.
+
+CRITÉRIOS DE APROVAÇÃO:
+  - O Modo Avião foi habilitado com sucesso, desabilitando o Wi-Fi e alterando o tipo de rede móvel para "Desconhecido".

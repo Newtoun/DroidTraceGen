@@ -1,0 +1,5 @@
+Get current screen: Start Recording | Home | com.google.android.apps.nexuslauncher
+Incoming call ringing
+Select Answer | Home | com.google.android.apps.nexuslauncher
+Answer call or Call active
+Get current screen: Phone | Phone | com.google.android.dialer

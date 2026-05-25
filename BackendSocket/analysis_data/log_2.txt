@@ -1,0 +1,7 @@
+Get current screen: Start Recording | Home | com.google.android.apps.nexuslauncher
+Get current screen: T-Mobile | No Title | com.android.systemui
+Get current screen: 14 (UE1A.230829.036.A4) | No Title | com.android.systemui
+Select Airplane mode, On [ON] | No Title | com.android.systemui
+Airplane Mode enabled
+Disable Wi-Fi
+Mobile network type changed to: Unknown
