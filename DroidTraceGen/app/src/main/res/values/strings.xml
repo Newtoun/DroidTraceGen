@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">GravadorDeAcoes</string>
+    <string name="accessibility_service_description">Serviço para Gravação de Ações</string>
+</resources>

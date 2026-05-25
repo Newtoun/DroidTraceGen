@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="24dp"
+    tools:context=".view.MainActivity">
+
+    <Button
+        android:id="@+id/buttonSetupService"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:text="Configurar Serviço de Análise" />
+
+    <CheckBox
+        android:id="@+id/id_overlay"
+        android:layout_width="200dp"
+        android:layout_height="63dp"
+        android:layout_below="@+id/buttonSetupService"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="100dp"
+        android:layout_marginTop="47dp"
+        android:clickable="false"
+        android:text="Sobreposição" />
+
+    <CheckBox
+        android:id="@+id/id_notification"
+        android:layout_width="200dp"
+        android:layout_height="63dp"
+        android:layout_below="@+id/buttonSetupService"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="100dp"
+        android:layout_marginTop="100dp"
+        android:clickable="false"
+        android:text="Notificação" />
+
+    <CheckBox
+        android:id="@+id/id_Acessibility2"
+        android:layout_width="200dp"
+        android:layout_height="63dp"
+        android:layout_below="@+id/buttonSetupService"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="100dp"
+        android:layout_marginTop="73dp"
+        android:clickable="false"
+        android:text="Acessibilidade" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="199dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/buttonSetupService"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="100dp"
+        android:layout_marginTop="31dp"
+        android:clickable="false"
+        android:text="Permissões necessárias:" />
+
+</RelativeLayout>

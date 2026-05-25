@@ -1,0 +1,12 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+
+    <View
+        android:id="@+id/floating_button"
+        android:layout_width="56dp"
+        android:layout_height="56dp"
+        android:background="@drawable/shape_floating_button"
+        android:contentDescription="Botão para iniciar ou parar a gravação de ações" />
+
+</FrameLayout>
